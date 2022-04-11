@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo app</title>
 </head>
+
 <body>
-    
+
     <div class="login">
         <h2>Faça login</h2>
         <form>
@@ -24,25 +26,67 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js"></script>
-   
-   
-   <script type="module">
+
+
+    <script type="module">
         // https://firebase.google.com/docs/web/setup#available-libraries
-      
+
         // Your web app's Firebase configuration
         const firebaseConfig = {
-          apiKey: "AIzaSyCOEO_IbjRsg_8FUcAkRi_ZfTwdUUXDtzQ",
-          authDomain: "cursodankicode-90c20.firebaseapp.com",
-          projectId: "cursodankicode-90c20",
-          storageBucket: "cursodankicode-90c20.appspot.com",
-          messagingSenderId: "152256276497",
-          appId: "1:152256276497:web:d6224c3fc60614898769b0"
+            apiKey: "AIzaSyCOEO_IbjRsg_8FUcAkRi_ZfTwdUUXDtzQ",
+            authDomain: "cursodankicode-90c20.firebaseapp.com",
+            projectId: "cursodankicode-90c20",
+            storageBucket: "cursodankicode-90c20.appspot.com",
+            messagingSenderId: "152256276497",
+            appId: "1:152256276497:web:d6224c3fc60614898769b0"
         };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
 
-        // comeã aqui.
-      </script> 
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // começa aqui.
+        var usuario = null;
+        var formLogin = document.querySelector('form');
+       
+
+    //Para criar uma conta de usuário no authorization
+    //
+    //     firebase.auth().createUserWithEmailAndPassword('afranio@hotmail.com', '123456')
+    //         .then((userCredential) => {
+    //             // Signed in
+    //             var user = userCredential.user;
+    //
+    //             // ...
+    //         })
+    //         .catch((error) => {
+    //             console.log("AIII deu erro")
+    //             var errorCode = error.code;
+    //             var errorMessage = error.message;
+    //             // ..
+    //         });
+
+    formLogin.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let email = document.querySelector('[name=email]').value;
+            let password = document.querySelector('[name=password]').value;
+
+
+            // esse metodo é para logar com uma conta já existente.
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+                    console.log("OIIII")
+                    // ...
+                })
+                .catch((error) => {
+                    console.log("AIII deu erro")
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                });
+        })
+
+    </script>
 </body>
+
 </html>

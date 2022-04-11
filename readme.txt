@@ -22,3 +22,39 @@ essa linha deve sempre ficar em primeiro na parte dos import.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 ou 
 <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+
+É preciso liberar o tipo de auth na conta firebase. ( entre no projeto que você deseja ativar o auth, vá em
+AUTHENTICATION depois em PROVIDERS e então escolha e ative os tipos de provedores. )
+
+depois vá em : https://firebase.google.com/docs/auth?authuser=1
+neste link vocÊ encontrará métodos já prontos para uso. Escolha a plataforma e siga.
+Para nosso caso vamos escolher WEB -> PASSWORD AUTHENTICATION
+* Create a password-based account
+
+codigo firebase ( Ao passar um email e senha será criado uma nova conta.) 
+firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ..
+  });
+
+  para logar: Nesse passo já deve existir uma conta criada.
+
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+
+  
