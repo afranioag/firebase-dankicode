@@ -23,6 +23,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebas
 ou 
 <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
 
+
+----------------------  FIREBASE AUTHENTICATION  ------------------------------------------
+
 É preciso liberar o tipo de auth na conta firebase. ( entre no projeto que você deseja ativar o auth, vá em
 AUTHENTICATION depois em PROVIDERS e então escolha e ative os tipos de provedores. )
 
@@ -57,4 +60,22 @@ firebase.auth().createUserWithEmailAndPassword(email, password)
     var errorMessage = error.message;
   });
 
-  
+
+----------------------  FIREBASE FIRESTORE  ------------------------------------------
+Passo 1. Ativar o banco.
+clique em firestore e iniciar database.
+siga os passo simples avançando apenas (obs: você escolher a região onde seus dados ficarão armazenados, se tiver alguma
+preferência escolha, se não, apenas next)
+
+passo 2. Editar regras.
+mudar isso:
+ match /{document=**} {
+      allow read, write: if false;
+    }
+
+para isso:
+ match /{document=**} {
+      allow read, write: if true;
+    }
+
+depois clique em PUBLICAR.

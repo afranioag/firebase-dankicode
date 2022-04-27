@@ -1,0 +1,23 @@
+body{
+    padding: 0;
+    border: 0;
+    background-color: slategrey;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.container-login{
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 900px;
+    height: 500px;
+}
